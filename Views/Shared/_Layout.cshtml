@@ -1,0 +1,47 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DisasterAlleviation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-sky-100">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50 relative">
+        <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+            <h1 class="text-xl font-bold text-sky-700">Gift of the Givers - Disaster Alleviation</h1>
+            <nav class="space-x-4">
+                <a asp-controller="Home" asp-action="Index" class="text-gray-700 hover:text-sky-600 font-medium">Home</a>
+                <a asp-controller="Account" asp-action="Register" class="text-gray-700 hover:text-sky-600 font-medium">Register</a>
+                <a asp-controller="Account" asp-action="Login" class="text-gray-700 hover:text-sky-600 font-medium">Login</a>
+                <a asp-controller="Donation" asp-action="Create" class="text-gray-700 hover:text-sky-600 font-medium">Donate</a>
+                <a asp-controller="Incident" asp-action="Create" class="text-gray-700 hover:text-sky-600 font-medium">Report Incident</a>
+                <a asp-controller="Volunteer" asp-action="Signup" class="text-gray-700 hover:text-sky-600 font-medium">Volunteer</a>
+                <a asp-controller="Account" asp-action="Logout" class="text-gray-700 hover:text-red-600 font-medium">Logout</a>
+                <a asp-controller="VolunteerTasks" asp-action="Manage" class="text-gray-700 hover:text-red-600 font-medium">Manage Tasks</a> |
+
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        @if (TempData["Message"] != null)
+        {
+            <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-md">
+                @TempData["Message"]
+            </div>
+        }
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 text-gray-500">
+        <small>&copy; @DateTime.Now.Year Disaster Alleviation</small>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

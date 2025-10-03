@@ -1,0 +1,58 @@
+﻿@model DisasterAlleviation.Models.VolunteerTask
+@{
+    var action = ViewData["Title"] ?? "Edit Task";
+}
+
+<div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg border">
+    <h2 class="text-3xl font-bold mb-6 text-center text-sky-700 flex items-center justify-center gap-2">
+        <i class="fas fa-edit"></i> @action
+    </h2>
+
+    <form method="post" class="space-y-6">
+        <div>
+            <label asp-for="Title" class="block font-semibold text-gray-700 mb-1">
+                <i class="fas fa-heading text-sky-600"></i> Task Title
+            </label>
+            <input asp-for="Title" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-sky-500" />
+        </div>
+
+        <div>
+            <label asp-for="Description" class="block font-semibold text-gray-700 mb-1">
+                <i class="fas fa-align-left text-sky-600"></i> Description
+            </label>
+            <textarea asp-for="Description" rows="3" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-sky-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+            <div>
+                <label asp-for="StartTime" class="block font-semibold text-gray-700 mb-1">
+                    <i class="fas fa-clock text-sky-600"></i> Start Time
+                </label>
+                <input asp-for="StartTime" type="datetime-local" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-sky-500" />
+            </div>
+
+            <div>
+                <label asp-for="EndTime" class="block font-semibold text-gray-700 mb-1">
+                    <i class="fas fa-hourglass-end text-sky-600"></i> End Time
+                </label>
+                <input asp-for="EndTime" type="datetime-local" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-sky-500" />
+            </div>
+        </div>
+
+        <div>
+            <label asp-for="Location" class="block font-semibold text-gray-700 mb-1">
+                <i class="fas fa-map-marker-alt text-sky-600"></i> Location
+            </label>
+            <input asp-for="Location" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-sky-500" />
+        </div>
+
+        <div class="flex justify-between items-center mt-6">
+            <a asp-action="Manage" class="px-5 py-2 rounded-lg border border-gray-400 text-gray-600 hover:bg-gray-100 transition">
+                <i class="fas fa-arrow-left"></i> Cancel
+            </a>
+            <button type="submit" class="px-6 py-2 bg-sky-600 text-white font-semibold rounded-lg shadow hover:bg-sky-700 transition">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+        </div>
+    </form>
+</div>

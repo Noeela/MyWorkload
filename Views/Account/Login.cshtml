@@ -1,0 +1,37 @@
+@model DisasterAlleviation.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
+
+        <form method="post" class="space-y-6">
+            <!-- Email -->
+            <div>
+                <label asp-for="Email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input asp-for="Email" placeholder="Enter your email"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg
+                       shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500" />
+                <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label asp-for="Password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input asp-for="Password" type="password" placeholder="Enter your password"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg
+                       shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500" />
+                <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit"
+                    class="w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg
+                       shadow-md transition transform hover:scale-105">
+                Login
+            </button>
+        </form>
+    </div>
+</div>

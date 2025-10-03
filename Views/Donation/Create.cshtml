@@ -1,0 +1,50 @@
+@model DisasterAlleviation.Models.Donation
+@{
+    ViewData["Title"] = "Donate Resources";
+}
+
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-sky-100 to-blue-200 p-6">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-lg">
+        <h2 class="text-3xl font-extrabold text-gray-800 mb-6 text-center">Donate Resources</h2>
+
+        <form method="post" class="space-y-6">
+            <!-- Resource Type -->
+            <div>
+                <label asp-for="ResourceType" class="block text-sm font-medium text-gray-700"></label>
+                <input asp-for="ResourceType" placeholder="e.g., Food, Clothing, Medical Supplies"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                              focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-gray-900" />
+                <span asp-validation-for="ResourceType" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Quantity -->
+            <div>
+                <label asp-for="Quantity" class="block text-sm font-medium text-gray-700"></label>
+                <input asp-for="Quantity" type="number" placeholder="Enter quantity"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                              focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-gray-900" />
+                <span asp-validation-for="Quantity" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Notes -->
+            <div>
+                <label asp-for="Notes" class="block text-sm font-medium text-gray-700"></label>
+                <textarea asp-for="Notes" rows="4" placeholder="Add any details (optional)"
+                          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                                 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-gray-900"></textarea>
+                <span asp-validation-for="Notes" class="text-red-500 text-sm"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                    class="w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl
+                           shadow-md transition duration-200 ease-in-out transform hover:scale-105">
+                Submit Donation
+            </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

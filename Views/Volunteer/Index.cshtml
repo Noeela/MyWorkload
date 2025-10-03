@@ -1,0 +1,45 @@
+@model IEnumerable<DisasterAlleviation.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-extrabold text-gray-800 mb-8 text-center sm:text-left">
+        @ViewData["Title"]
+    </h2>
+
+   
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var v in Model)
+        {
+            <div class="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">@v.Name</h3>
+                    <div class="text-sm text-gray-500 font-medium">
+                        <span class="inline-block bg-sky-100 text-sky-600 rounded-full px-3 py-1">
+                            @v.SignedUpAt.ToString("MMMM dd, yyyy hh:mm tt")
+                        </span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-gray-700 font-medium">
+                        <span class="text-gray-500">Phone:</span> @v.Phone
+                    </p>
+                    <p class="text-gray-700 font-medium">
+                        <span class="text-gray-500">Skills:</span>
+                        <span class="inline-block mt-2 flex flex-wrap gap-2">
+                            @foreach (var skill in v.Skills.Split(","))
+                            {
+                                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold">
+                                    @skill.Trim()
+                                </span>
+                            }
+                        </span>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

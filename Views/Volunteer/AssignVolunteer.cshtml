@@ -1,0 +1,36 @@
+﻿@model DisasterAlleviation.Models.VolunteerTask
+@{
+    var volunteers = ViewBag.Volunteers as List<DisasterAlleviation.Models.Volunteer>;
+}
+
+<div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border">
+    <h2 class="text-3xl font-bold mb-6 text-center text-green-700 flex items-center justify-center gap-2">
+        <i class="fas fa-user-plus"></i> Assign Volunteer to <span class="text-sky-700">@Model.Title</span>
+    </h2>
+
+    <form asp-action="AssignVolunteer" method="post" class="space-y-6">
+        <input type="hidden" name="taskId" value="@Model.Id" />
+
+        <div>
+            <label class="block font-semibold text-gray-700 mb-1">
+                <i class="fas fa-users text-green-600"></i> Select Volunteer
+            </label>
+            <select name="volunteerId" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500">
+                @foreach (var v in volunteers)
+                {
+                    <option value="@v.Id">@v.Name (@v.Phone)</option>
+                }
+            </select>
+        </div>
+
+        <div class="flex justify-between items-center mt-6">
+            <a asp-action="Manage" class="px-5 py-2 rounded-lg border border-gray-400 text-gray-600 hover:bg-gray-100 transition">
+                <i class="fas fa-arrow-left"></i> Cancel
+            </a>
+            <button type="submit" class="px-6 py-2 bg-green-600 text-white font-semibold rounded-lg shadow hover:bg-green-700 transition">
+                <i class="fas fa-check"></i> Assign Volunteer
+            </button>
+        </div>
+    </form>
+</div>
+

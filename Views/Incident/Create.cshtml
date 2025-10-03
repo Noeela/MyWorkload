@@ -1,0 +1,57 @@
+@model DisasterAlleviation.Models.IncidentReport
+@{
+    ViewData["Title"] = "Report Incident";
+}
+
+<h2>Report an Incident</h2>
+
+<form method="post">
+    <table style="width:100%; border-collapse:collapse;">
+        <tr>
+            <td style="padding:8px; width:150px;">
+                <label asp-for="Title" class="font-bold"></label>
+            </td>
+            <td style="padding:8px;">
+                <input asp-for="Title" placeholder="Give the incident a short title"
+                       class="w-full border rounded px-2 py-1" />
+                <span asp-validation-for="Title" class="text-red-500 text-sm"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding:8px;">
+                <label asp-for="Description" class="font-bold"></label>
+            </td>
+            <td style="padding:8px;">
+                <textarea asp-for="Description" rows="4" placeholder="Describe what happened"
+                          class="w-full border rounded px-2 py-1"></textarea>
+                <span asp-validation-for="Description" class="text-red-500 text-sm"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding:8px;">
+                <label asp-for="Location" class="font-bold"></label>
+            </td>
+            <td style="padding:8px;">
+                <input asp-for="Location" placeholder="Enter location (e.g., Cape Town)"
+                       class="w-full border rounded px-2 py-1" />
+                <span asp-validation-for="Location" class="text-red-500 text-sm"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td style="padding:8px;">
+                <button type="submit"
+                        style="background:#1e90ff; color:white; padding:10px 20px; border:none; border-radius:5px;">
+                    Submit
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

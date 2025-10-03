@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DisasterAlleviation.Models.VolunteerTask>
+
+<h2 class="text-3xl font-bold mb-6">Manage Volunteer Tasks</h2>
+
+<a href="/Volunteer/Create" class="px-4 py-2 bg-sky-600 text-white rounded-lg">
+    + Create New Task
+</a>
+
+
+<table class="w-full mt-6 border-collapse">
+    <thead>
+        <tr class="bg-gray-100 text-left">
+            <th class="p-3">Title</th>
+            <th class="p-3">Schedule</th>
+            <th class="p-3">Location</th>
+            <th class="p-3">Volunteers</th>
+            <th class="p-3">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var task in Model)
+    {
+        <tr class="border-b">
+            <td class="p-3 font-bold">@task.Title</td>
+                <td class="p-3">@task.StartTime.ToString("MMM dd, HH:mm") - @task.EndTime.ToString("HH:mm")</td>
+            <td class="p-3">@task.Location</td>
+            <td class="p-3">
+                @foreach (var a in task.Assignments)
+                {
+                    <span class="bg-sky-100 text-sky-800 px-2 py-1 rounded-lg text-sm mr-1">@a.Volunteer.Name</span>
+                }
+            </td>
+            <td class="p-3 space-x-2">
+                <a asp-action="Edit" asp-route-id="@task.Id" class="text-blue-600">Edit</a>
+                <form asp-action="Delete" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="@task.Id" />
+                    <button type="submit" class="text-red-600">Delete</button>
+                </form>
+                <a asp-action="AssignVolunteer" asp-route-taskId="@task.Id" class="text-green-600">Assign Volunteer</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
